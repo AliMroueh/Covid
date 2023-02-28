@@ -1,5 +1,6 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
+import { CovidDataReducer } from "./reducers/covidReducers";
 // import { composeWithDevTools } from 'redux-devtools-extension';
 import {userRegisterReducer, userSigninReducer} from "./reducers/userReducers";
 
@@ -16,6 +17,7 @@ const initialState = {
 const reducer = combineReducers({
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
+    CovidData: CovidDataReducer
 })
 
 

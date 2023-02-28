@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import passport from 'passport';
 import { applyPassportStrategy } from './utils.js';
 import userRouter from './routers/userRouter.js'
+import covidRouter from './routers/covidRouter.js';
 
 const app = express();
 
@@ -20,6 +21,7 @@ mongoose.connect('mongodb://localhost/smile', {
   .catch(err => console.log(err));
 
   app.use('/api/users', userRouter);
+  app.use('/api/covid', covidRouter);
 
   app.get('/', (req, res) => {
     res.send('Server is ready');

@@ -14,7 +14,7 @@ expressAsyncHandler(async(req,res) => {
     const user = await User.findOne({email : req.body.email});
     if(user){
         if(bcrypt.compareSync(req.body.password, user.password)){
-            const refresh = refreshToken(user);
+            
             res.send({
                 _id : user._id,
                 name : user.name,
@@ -34,7 +34,7 @@ userRouter.post('/register', expressAsyncHandler(async(req,res) => {
     if(!req.body.email.match(emailValidation)){
         res.status(401).send({message : "Email should be like example@gmail.com"});
     }else if(!req.body.password.match(passValidation)){
-        res.status(401).send({message : "Password should be contain one: upper case, lower case, new number, no white space, minimum 8 chars"})
+        res.status(401).send({message : "Password should be contain one: upper case, lower case, new number, no white space, one special char, minimum 8 chars"})
     }else{
     const user = new User({name: req.body.name, email: req.body.email, password: bcrypt.hashSync(req.body.password, 8),
     });

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux'
 import { register } from '../actions/userActions';
-// import LoadingBox from '../components/LoadingBox';
-// import MessageBox from '../components/MessageBox';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 
 // import { register } from '../actions/userAction';
 // import LoadingBox from '../components/LoadingBox';
@@ -18,14 +18,6 @@ export default function RegisterScreen(props) {
     const [confirmpassword, setConfirmPassword] = useState('');
     const [email,setEmail] = useState('');
     const [password, setPassword] = useState('')
-    // const redirect = props.location.search ? props.location.search.split('=')[1] : '/';
-
-    // this is in react router v6 instead of props.location.search
-    const {search} = useLocation();
-    // URLSearchParams convert it to string
-    const redirectInUrl = new URLSearchParams(search).get('redirect');
-    // here convert it to number
-    const redirect = redirectInUrl ? redirectInUrl : '/';
 
     const userRegister = useSelector(state => state.userRegister);
     const {userInfo, loading, error} = userRegister;
@@ -42,84 +34,130 @@ export default function RegisterScreen(props) {
 
     useEffect(() => {
         if(userInfo){
-            navigate(redirect);
+            navigate('/');
         }
         if(error){
             console.log(error)
         }
-    }, [navigate, redirect, userInfo,error]);
+    }, [navigate, userInfo,error]);
     return (
-        <div id='register'>
-            <form className="form" onSubmit={submitHandler}>
-                <div>
-                    <h1>Create Account</h1>
-                </div>
-                {/* {loading && <LoadingBox></LoadingBox>}
-                {error && <MessageBox variant='danger'>{error}</MessageBox>} */}
-                <div>
-                <div className='icon'>
-                    <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
+        // <div id='register'>
+        //     <form className="form" onSubmit={submitHandler}>
+        //         <div>
+        //             <h1>Create Account</h1>
+        //         </div>
+        //         {loading && <LoadingBox></LoadingBox>}
+        //         {error && <MessageBox variant='danger'>{error}</MessageBox>}
+        //         <div>
+        //         <div className='icon'>
+        //             <input
+        //             type="text"
+        //             id="name"
+        //             placeholder="Enter your name"
+        //             required
+        //             onChange={(e) => setName(e.target.value)}
+        //             ></input>
+        //             <span><i className="fa-solid fa-user"></i></span>
+        //         </div>
+        //         </div>
+        //         <div>
+        //         <div className='icon'>
+        //             <input
+        //             type="email"
+        //             id="email"
+        //             placeholder="Enter email"
+        //             required
+        //             onChange={(e) => setEmail(e.target.value)}
+        //             ></input>
+        //             <span><i className="fa-solid fa-envelope"></i></span>
+        //             </div>
+        //         </div>
+        //         <div>
+        //         <div className='icon'>
+        //             <input
+        //             type="password"
+        //             id="password"
+        //             placeholder="Enter password"
+        //             required
+        //             onChange={(e) => setPassword(e.target.value)}
+        //             ></input>
+        //             <span><i className="fa-solid fa-lock"></i></span>
+        //             </div>
+        //         </div>
+        //         <div>
+        //         <div className='icon'>
+        //             <input
+        //             type="password"
+        //             id="confirmPassword"
+        //             placeholder="Enter confirm password"
+        //             required
+        //             onChange={(e) => setConfirmPassword(e.target.value)}
+        //             ></input>
+        //             <span><i className="fa-solid fa-lock"></i></span>
+        //             </div>
+        //         </div>
+        //         {/* <div>
+        //             <label/>
+        //             <button className="primary" type="submit">Register</button>
+        //         </div> */}
+        //         <div className='signIn'>
+        //             <label>Register</label>
+        //             <button className="primary" type="submit"><i className="fa-solid fa-arrow-right-long"></i></button>
+        //         </div>
+        //         <div>
+        //             <label/>
+        //             <div>
+        //                 Already have an account? {' '}
+        //                 <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
+        //             </div>
+        //         </div>
+        //     </form>
+        // </div>
+
+<div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
+<div className='hidden sm:block'>
+    <img className='w-full h-full object-cover' src="./gettyimages-1216445906_web.jpg" alt="" />
+</div>
+
+<div className='bg-cyan-800  flex flex-col justify-center'>
+    <form className='max-w-[400px] w-full mx-auto rounded-lg bg-cyan-900 p-8 px-8'  onSubmit={submitHandler}>
+        <h2 className='text-4xl text-white font-bold text-center'>Create Account</h2>
+{loading && <LoadingBox></LoadingBox>}
+{error && <MessageBox variant='danger'>{error}</MessageBox>}
+        <div className='flex flex-col text-gray-400 py-2'>
+                    <label>Name</label>
+                    <input className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="text" 
                     required
-                    onChange={(e) => setName(e.target.value)}
-                    ></input>
-                    <span><i className="fa-solid fa-user"></i></span>
+                    onChange={(e) => setName(e.target.value)}/>
                 </div>
-                </div>
-                <div>
-                <div className='icon'>
-                    <input
-                    type="email"
-                    id="email"
-                    placeholder="Enter email"
-                    required
-                    onChange={(e) => setEmail(e.target.value)}
-                    ></input>
-                    <span><i className="fa-solid fa-envelope"></i></span>
-                    </div>
-                </div>
-                <div>
-                <div className='icon'>
-                    <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter password"
-                    required
-                    onChange={(e) => setPassword(e.target.value)}
-                    ></input>
-                    <span><i className="fa-solid fa-lock"></i></span>
-                    </div>
-                </div>
-                <div>
-                <div className='icon'>
-                    <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="Enter confirm password"
-                    required
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    ></input>
-                    <span><i className="fa-solid fa-lock"></i></span>
-                    </div>
-                </div>
-                {/* <div>
-                    <label/>
-                    <button className="primary" type="submit">Register</button>
-                </div> */}
-                <div className='signIn'>
-                    <label>Register</label>
-                    <button className="primary" type="submit"><i className="fa-solid fa-arrow-right-long"></i></button>
-                </div>
-                <div>
-                    <label/>
-                    <div>
-                        Already have an account? {' '}
-                        <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
-                    </div>
-                </div>
-            </form>
+        <div className='flex flex-col text-gray-400 py-2'>
+            <label>Email</label>
+            <input className='rounded-lg bg-gray-700 mt-2 p-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="email" 
+            required
+            onChange={(e) => setEmail(e.target.value)}/>
         </div>
+        <div className='flex flex-col text-gray-400 py-2'>
+            <label>Password</label>
+            <input className='p-2 rounded-lg bg-gray-700 mt-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="password" 
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            />
+        </div>
+        <div className='flex flex-col text-gray-400 py-2'>
+            <label>Password</label>
+            <input className='p-2 rounded-lg bg-gray-700 mt-2 focus:border-blue-500 focus:bg-gray-800 focus:outline-none' type="password" 
+            required
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+        </div>
+        <div className='flex justify-between text-gray-400 py-2'>
+        Already have an account? {' '}
+         <Link className='text-teal-500 hover:font-semibold' to={`/signin`}>Sign-In</Link>
+        </div>
+        <button className='w-full my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>Register</button>
+        
+    </form>
+</div>
+</div>
     )
 }
