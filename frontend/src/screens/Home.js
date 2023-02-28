@@ -34,10 +34,10 @@ export default function Home() {
   // }
   return (
     <div>
-      {loading && <LoadingBox></LoadingBox>}
-      {error && <MessageBox variant='danger'>{error}</MessageBox>}
       <Nav />
       <div className="bg-cyan-900 flex flex-col justify-center h-screen pt-20 overflow-auto rounded-lg shadow">
+      {loading && <LoadingBox></LoadingBox>}
+      {error && <MessageBox variant='danger'>{error}</MessageBox>}
       
      {/* Start select box */}
      <div className="w-72 font-medium h-auto items-center self-center">

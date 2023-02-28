@@ -9,7 +9,7 @@ export const CovidDataReducer = (state =[], action) =>{
         case USER_COVID_SUCCESS :
             return {loading: false, CovData: action.payload};
         case USER_COVID_FAIL :
-            return {loading: true, error: action.payload};
+            return {loading: false, error: action.payload};
         default: 
             return state;
     }

@@ -41,6 +41,7 @@ body{
   padding: 1rem;
   border: 0.1rem solid transparent;
   border-radius: 0.5rem;
+  margin-bottom: 10px;
 }
 .alert-info{
   color: #2020a0;

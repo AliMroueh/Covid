@@ -26,54 +26,7 @@ export default function SigninScreen() {
         }
     }, [navigate, userInfo]);
     return (
-        // <div id='signin'> 
-        //     <form className="form" onSubmit={submitHandler}>
-        //         <div>
-        //             <h1>Hello</h1>
-        //             <p>Sign in to your account</p>
-        //         </div>
-        //         {loading && <LoadingBox></LoadingBox>}
-        //         {error && <MessageBox variant='danger'>{error}</MessageBox>}
-        //         <div className='email'>
-        //             {/* <label htmlFor="email">Email address</label> */}
-        //             <div className='icon'>
-        //                 <input
-        //                 type="email"
-        //                 id="email"
-        //                 placeholder="Enter email"
-        //                 required
-        //                 onChange={(e) => setEmail(e.target.value)}
-        //                 ></input>
-        //                 <span><i className="fa-solid fa-envelope"></i>
-        //                 </span>
-        //             </div>
-        //         </div>
-        //         <div>
-        //             {/* <label htmlFor="password">Password</label> */}
-        //             <div className='icon'>
-        //             <input
-        //             type="password"
-        //             id="password"
-        //             placeholder="Enter password"
-        //             required
-        //             onChange={(e) => setPassword(e.target.value)}
-        //             ></input>
-        //             <span><i className="fa-solid fa-lock"></i></span>
-        //             </div>
-        //         </div>
-        //         <div className='signIn'>
-        //             <label>Sign in</label>
-        //             <button className="primary" type="submit"><i className="fa-solid fa-arrow-right-long"></i></button>
-        //         </div>
-        //         <div>
-        //             <label/>
-        //             <div>
-        //                 Don't have an account? {' '}
-        //                 <Link to={`/register?redirect=${redirect}`}>Create</Link>
-        //             </div>
-        //         </div>
-        //     </form>
-        // </div>
+
         <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
         <div className='hidden sm:block'>
             <img className='w-full h-full object-cover' src="./T-cell-1.jpg" alt="" />

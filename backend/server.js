@@ -13,7 +13,7 @@ app.use(passport.initialize());
 // Apply strategy to passport
 applyPassportStrategy(passport);
 
-mongoose.connect('mongodb://localhost/smile', {
+mongoose.connect('mongodb://localhost/covid', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
